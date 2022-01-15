@@ -12,21 +12,21 @@ namespace EmployeWages
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
         public const int EMP_RATE_PER_HR = 20;
-        public const int MAX_WORKING_DAYS = 2;
+        public const int MAX_WORKING_DAYS = 20;
+        public const int MAX_HOURS_IN_MONTH = 100;
         static void Main(string[] args)
         {
             //UC1 Program
             //constants
            
             //variables
-            int totalWage = 0;
+            int totalEmpHrs = 0;
             int empHrs = 0;
-            int empWage = 0;
-            int day;
-            Random random = new Random();
-            for ( day = 1; day <= MAX_WORKING_DAYS; day++)
+            int totalWorkingDays = 0;
+            while(totalEmpHrs <= MAX_HOURS_IN_MONTH && totalWorkingDays <MAX_WORKING_DAYS)
             {
-
+                totalWorkingDays++;
+                Random random = new Random();
                 int randomInput = random.Next(0, 3);
                 switch (randomInput)
                 {
@@ -47,13 +47,11 @@ namespace EmployeWages
                         break;
                 }
             }
-            //calculation of salary
-            empWage = EMP_RATE_PER_HR * empHrs;
-            Console.WriteLine("Employee wages for day{0} is {1}", day, empWage);
-            totalWage += empWage;
-            //totalwage=totalwage+empwage
-            Console.WriteLine();
-            Console.WriteLine("Total wages for {0}Day is {1}", MAX_WORKING_DAYS, totalWage);
+           
+            totalEmpHrs += empHrs;
+            Console.WriteLine("Day#" + totalWorkingDays + "Emp Hrs" + empHrs);
+            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HR;
+            Console.WriteLine("Total emp wage :",  + totalEmpWage);
             Console.ReadLine();
         }
     }
