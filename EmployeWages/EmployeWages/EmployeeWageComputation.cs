@@ -12,25 +12,33 @@ namespace EmployeWages
         {
             //UC1 Program
             //constants
-            //uc2 Calculate totalwage of employee
-            int IS_FULL_TIME = 1;
-            Random random = new Random();
+           
+            int IS_PART_TIME = 1;
+            int IS_FULL_TIME=2;
+            int EMP_RATE_PER_HR = 20;
+            //variables
             int totalWage = 0;
             int empHrs = 0;
-            int empRatePerHr = 20;
+            Random random = new Random();
 
-            int empCheck = random.Next(0, 2);
-            if (empCheck == IS_FULL_TIME)
+            int randomInput = random.Next(0, 3);
+            if (randomInput == IS_FULL_TIME)
             {
-                Console.WriteLine("Employee is Present");
+                Console.WriteLine("Fulltime Employee is Present");
                 empHrs = 8;
+            }
+            else if (randomInput == IS_PART_TIME)
+            {
+                Console.WriteLine("Parttime Employee is Present");
+                empHrs = 4;
             }
             else
             {
                 Console.WriteLine("Employee is Absent");
                 empHrs = 0;
             }
-            totalWage = empRatePerHr * empHrs;
+            //calculation of salary
+            totalWage = EMP_RATE_PER_HR * empHrs;
             Console.WriteLine("Total Wage:" + totalWage);
 
         }
